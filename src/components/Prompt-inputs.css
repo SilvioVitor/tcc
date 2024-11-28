@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap');
+
+#diciplina {
+
+}
+#tema {
+    
+}
+#foco {
+    
+}
+#alternativas {
+    font-size: 1.2rem;
+    width: 3rem;
+    padding: 0.2rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    border: none;
+    font-family: "Parkinsans", sans-serif;
+}
+#palavras {
+    font-size: 1.2rem;
+    width: 5rem;
+    padding: 0.2rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    border: none;
+    font-family: "Parkinsans", sans-serif;
+}
+
