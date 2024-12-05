@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { supabase } from "../utils/supabase";
 
 export const QuestionContext = createContext({
     response: "",
@@ -24,7 +25,13 @@ export const QuestionContext = createContext({
     setInput8: () => { },
     setResponse: () => { },
     createAnalysis: () => { },
-    createQuestion: () => { }
+    createQuestion: () => { },
+    session: null,
+    sessionLoading: false,
+    sessionError: "",
+    handleSignUp: () => { },
+    handleSignIn: () => { },
+    handleLogout: () => { },
 });
 
 export default function QuestionContextProvider({ children }) {
@@ -40,6 +47,10 @@ export default function QuestionContextProvider({ children }) {
     const [input6, setInput6] = useState("");
     const [input7, setInput7] = useState("");
     const [input8, setInput8] = useState("");
+
+    const [session, setSession] = useState(null);
+    const [sessionLoading, setSessionLoading] = useState(false);
+    const [sessionError, setSessionError] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
@@ -81,6 +92,49 @@ export default function QuestionContextProvider({ children }) {
         return generatedAnalysis;
     }
 
+    useEffect(() => {
+        const { data: subscription } = supabase.auth.onAuthStateChange(
+            (event, session) => {
+                setSession(session);
+            }
+        );
+
+        // Cleanup da inscrição
+        return () => subscription.subscription.unsubscribe();
+    }, []);
+
+    const handleSignUp = async (email, password) => {
+        setSessionLoading(true);
+        setSessionError(null);
+            const { data, error } = await supabase.auth.signUp({ 
+                email: email, 
+                password: password,
+            });
+            setSessionLoading(false);
+            if (error) setSessionError(error.message);
+            else
+                alert(
+                    "Signed Up! Check and verify your email to confirm subscription!"
+                );
+        }
+ 
+
+    const handleSignIn = async (email, password) => {
+        setSessionLoading(true);
+        setSessionError(null);
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        setSessionLoading(false);
+        if (error) setSessionError(error.message);
+    };
+
+    function handleLogout() {
+        setSession(null);
+    }
+
+
     const ctx = {
         response,
         question,
@@ -104,7 +158,13 @@ export default function QuestionContextProvider({ children }) {
         setInput8,
         setResponse,
         createAnalysis,
-        createQuestion
+        createQuestion,
+        session,
+        sessionLoading,
+        sessionError,
+        handleSignUp,
+        handleSignIn,
+        handleLogout
     };
 
     return <QuestionContext.Provider value={ctx}>

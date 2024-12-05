@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound.js';
 import Question from './pages/Question..js';
 import Analysis from './pages/Analysis.js';
 import QuestionContextProvider from './context/QuestionContext.js';
+import Login from './pages/Login.js';
+import Register from './pages/Resgister.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +22,8 @@ root.render(
           <Route path='/app' element={<App />} />
           <Route path='/question' element={<Question />} />
           <Route path='/analysis' element={<Analysis />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

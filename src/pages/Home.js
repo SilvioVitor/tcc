@@ -1,6 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../images/logo-1-1.png"
 import './styles.css'
+import { useContext } from 'react';
+import { QuestionContext } from '../context/QuestionContext';
 
 export default function Home() {
 
@@ -9,6 +11,8 @@ export default function Home() {
     function hendleClick() {
         navigate('/app')
     }
+
+    const { session } = useContext(QuestionContext);
 
     return (
         <div className='main-home'>
@@ -23,7 +27,14 @@ export default function Home() {
                 <div className='start-home'>
                     <img src={logo} alt='Logo-IF' />
                     <p>"Aproveite o poder da IA avançada para criar perguntas e respostas personalizadas, melhorar seus estudos e acompanhar seu progresso em tempo real!"</p>
-                    <button className='button-start' onClick={hendleClick}>Start Aplication</button>
+                    {session ?
+                        <button className='button-start' onClick={hendleClick}>Start Aplication</button>
+                        :
+                        <Link to={"/login"}>
+                            <button className='button-start' >Start Aplication</button>
+                        </Link>
+
+                    }
                 </div>
                 <div className='info-home'>
                     <h2>Bem-vindo ao Sistema de Aprendizado Interativo!</h2>
