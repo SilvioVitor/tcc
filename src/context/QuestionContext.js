@@ -55,7 +55,7 @@ export default function QuestionContextProvider({ children }) {
         A questão deve ser voltada para ${input3}. Se caso for de multipla escolha
         inclua ${input6} alternativas, se caso não for desconcidere esse input, e limite o texto a ${input7} palavras. Não inclua a resposta.
         `;
-        
+
         const result = await model.generateContent(prompt);
         const generatedQuestion = result.response.text();
         setQuestion(generatedQuestion);
@@ -70,8 +70,8 @@ export default function QuestionContextProvider({ children }) {
 
         const genAI = new GoogleGenerativeAI("AIzaSyCMwzPeMu-_1EjfC7LP806cUw3IO-fVaLI");
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const prompt = `De acordo com essa pergunta ${question} analise a resposta desse aluno: ${input8}`;
-
+        const prompt = `De acordo com essa pergunta ${question} analise a resposta desse aluno: ${input8}
+        se o aluno responder com um numero ou a letra que corresponde a resposta correta, diga que esta correta, desconsidere o calculo, e mostre como deve ser feita `;
         const result = await model.generateContent(prompt);
         const generatedAnalysis = result.response.text();
         setAnalysis(generatedAnalysis);

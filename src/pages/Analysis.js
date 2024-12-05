@@ -35,7 +35,7 @@ export default function Analysis() {
                 <div className='decision'>
                     {loading ?
                         <div className="loading-analysis">
-                            <CircularProgress size="3rem" color="info" />
+                            <CircularProgress size="2rem" color="success" />
                         </div>
                         : 
                         <div>

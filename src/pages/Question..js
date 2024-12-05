@@ -30,7 +30,7 @@ export default function Question() {
                     <input type="text" className='input-response' value={input8} onChange={(e) => setInput8(e.target.value)} placeholder="Resposta" required />
                     {loading ?
                         <div className="loading-question">
-                            <CircularProgress size="2.3rem" color="info" />
+                            <CircularProgress size="1.8rem" color="success" />
                         </div> 
                         : 
                         <button type="submit" className='button-response' onClick={() => handleSubmit()} >

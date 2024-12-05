@@ -1,5 +1,4 @@
 import "./Prompt.css"
-import "./Prompt-inputs.css"
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QuestionContext } from "../context/QuestionContext";
@@ -83,7 +82,7 @@ export default function Prompt() {
                 </div>
                 {loading ?
                     <div className="loading">
-                        <CircularProgress size="2.5rem" color="info" />
+                        <CircularProgress size="2.5rem" color="success" />
                     </div>
                     :
                     <button type="submit" className='button-prompt' onClick={() => { handleSubmit() }} >
