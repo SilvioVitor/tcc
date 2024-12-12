@@ -191,6 +191,7 @@ input[type="radio"]:focus {
 .grupo-3 {
     display: flex;
     justify-content: space-between;
+    width: 50%;
 
     & p {
         padding: 0 1rem;
@@ -202,6 +203,7 @@ input[type="radio"]:focus {
 .grupo-4 {
     display: flex;
     justify-content: space-between;
+    width: 50%;
 
     & p {
         padding: 0 1rem;
@@ -233,13 +235,17 @@ input[type="radio"]:focus {
         width: 90%;
     }
 
-    .body-grupo-1, .body-grupo-2, .grupo-3, .grupo-4 {
+    .body-grupo-1, .body-grupo-2 {
         width: 100%; 
         gap: 0.8rem;
     }
 
     .grupo-1, .grupo-2 {
         gap: 0.5rem;
+    }
+
+    .grupo-3, .grupo-4 {
+        width: 60%;
     }
 }
 
@@ -271,6 +277,10 @@ input[type="radio"]:focus {
 
     .grupo-1 p, .grupo-2 p {
         font-size: 0.9rem;
+    }
+
+    .grupo-3, .grupo-4 {
+        width: 70%;
     }
 }
 
@@ -304,7 +314,8 @@ input[type="radio"]:focus {
         font-size: 0.6rem;
     }
 
-    .grupo-3 , .grupo-4 {
+    .grupo-3, .grupo-4 {
+        width: 100%;
         align-items: center;
     }
 

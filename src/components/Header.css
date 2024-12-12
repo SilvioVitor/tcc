@@ -23,7 +23,8 @@
         margin: 0; 
         font-size: 1rem;
         line-height: 7vh; 
-        text-align: left; 
+        text-align: left;
+        margin-left: 1rem; 
     }
 }
 
@@ -56,6 +57,37 @@
         padding: 0; 
     }
 }
+
+.header-right button {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
+    background-color: var(--lavender-blush); /* Cor de fundo */
+    color: var(--dark-slate-gray); /* Cor do texto */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suavidade ao interagir */
+    margin-right: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.header-right button:hover {
+    background-color: var(--dark-slate-gray); /* Cor ao passar o mouse */
+    color: var(--lavender-blush); /* Cor do texto ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.header-right button:active {
+    background-color: var(--lavender-blush); /* Cor ao clicar */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra reduzida */
+}
+
+button.highlight {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.7);
+    transition: box-shadow 0.3s ease;
+}
+
 
 /* Responsividade */
 @media (max-width: 1024px) {

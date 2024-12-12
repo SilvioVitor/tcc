@@ -103,21 +103,26 @@ export default function QuestionContextProvider({ children }) {
         return () => subscription.subscription.unsubscribe();
     }, []);
 
-    const handleSignUp = async (email, password) => {
+    const handleSignUp = async (userName, email, password) => {
         setSessionLoading(true);
         setSessionError(null);
-            const { data, error } = await supabase.auth.signUp({ 
-                email: email, 
-                password: password,
-            });
-            setSessionLoading(false);
-            if (error) setSessionError(error.message);
-            else
-                alert(
-                    "Signed Up! Check and verify your email to confirm subscription!"
-                );
-        }
- 
+        const { error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    first_name: userName,
+                },
+            },
+        });
+        setSessionLoading(false);
+        if (error) setSessionError(error.message);
+        else
+            alert(
+                "Signed Up! Check and verify your email to confirm subscription!"
+            );
+    }
+
 
     const handleSignIn = async (email, password) => {
         setSessionLoading(true);

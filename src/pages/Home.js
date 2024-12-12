@@ -20,7 +20,14 @@ export default function Home() {
                 <h1>Aplicação</h1>
                 <div className='header-div'>
                     <a href='#funcionamento'>Funcionamento</a>
-                    <button className='button-start-header' onClick={hendleClick}>Teste a Aplicação</button>
+                    {session ?
+                        <button className='button-start-header' onClick={hendleClick}>Teste a Aplicação</button>
+                        :
+                        <Link to={"/login"}>
+                            <button className='button-start-header' >Teste a Aplicação</button>
+                        </Link>
+
+                    }
                 </div>
             </div>
             <div className='body-home'>
